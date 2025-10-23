@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promoções Toners - Fran Cópias</title>
+    <link rel="shortcut icon" href="c:\Users\Balcão\Documents\projetos will\Nova pasta\logofran.jpg">
+    <title>Fran Cópias - Toners e Suprimentos</title>
     <style>
         * {
             margin: 0;
@@ -11,280 +12,546 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004999;
+            --secondary: #ffffff;
+            --text: #1a1a1a;
+            --bg: #f5f8fc;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 102, 204, 0.1);
+        }
+        
+        [data-theme="dark"] {
+            --primary: #3399ff;
+            --primary-dark: #0066cc;
+            --secondary: #1a1a1a;
+            --text: #ffffff;
+            --bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --shadow: rgba(51, 153, 255, 0.2);
+        }
+        
         body {
-            font-family: 'Arial', sans-serif;
-            background: #f0f0f0;
-            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: all 0.3s ease;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .promo-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 40px;
+        header {
+            background: var(--primary);
             color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
-        .promo-card:hover {
-            transform: translateY(-5px);
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
         
-        .promo-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-        
-        .promo-card.card1 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .promo-card.card2 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        
-        .promo-card.card3 {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-        
-        .header {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .logo-text {
-            font-size: 24px;
+        .logo {
+            font-size: 28px;
             font-weight: bold;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
-        .promo-badge {
-            background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(10px);
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 30px;
-            border: 2px solid rgba(255,255,255,0.5);
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
         }
         
-        .toner-model {
-            font-size: 48px;
-            font-weight: bold;
-            margin: 20px 0;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            letter-spacing: 2px;
-            position: relative;
-            z-index: 1;
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
         
-        .compatible {
-            font-size: 14px;
-            opacity: 0.9;
-            margin: 15px 0;
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .price-section {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 2px solid rgba(255,255,255,0.3);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .price-label {
-            font-size: 18px;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-        
-        .price-box {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            padding: 20px;
+        .cart-summary {
+            background: var(--card-bg);
+            padding: 25px;
             border-radius: 15px;
-            font-size: 42px;
-            font-weight: bold;
-            text-align: center;
-            border: 3px dashed rgba(255,255,255,0.5);
-            min-height: 100px;
+            box-shadow: 0 8px 24px var(--shadow);
+            margin-bottom: 40px;
+            border: 2px solid var(--primary);
+        }
+        
+        .cart-summary h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 10px;
         }
         
-        .features {
-            margin-top: 25px;
+        .cart-items {
+            margin: 20px 0;
+        }
+        
+        .cart-item {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: var(--bg);
+            margin-bottom: 10px;
+            border-radius: 10px;
             flex-wrap: wrap;
             gap: 10px;
-            position: relative;
-            z-index: 1;
         }
         
-        .feature-tag {
-            background: rgba(255,255,255,0.25);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
+        .cart-item-info {
+            flex: 1;
         }
         
-        .icon {
-            font-size: 60px;
-            margin: 20px 0;
-            opacity: 0.3;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-        }
-        
-        .whatsapp-btn {
-            margin-top: 25px;
-            text-align: center;
-            font-size: 16px;
+        .cart-item-name {
             font-weight: bold;
-            background: #25D366;
-            padding: 18px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card-bg);
+            padding: 5px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--primary);
+        }
+        
+        .qty-btn {
+            background: var(--primary);
             color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .qty-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .remove-btn:hover {
+            background: #c82333;
+        }
+        
+        .cart-total {
+            border-top: 2px solid var(--primary);
+            padding-top: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .whatsapp-checkout {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
             width: 100%;
-            position: relative;
-            z-index: 2;
-            text-decoration: none;
-            display: block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
         
-        .whatsapp-btn:hover {
+        .whatsapp-checkout:hover {
             background: #128C7E;
-            transform: scale(1.05);
+            transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
         
-        .whatsapp-btn:active {
-            transform: scale(0.98);
+        .whatsapp-checkout:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
         }
-
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 24px var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px var(--shadow);
+            border-color: var(--primary);
+        }
+        
+        .product-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .product-name {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .product-compatible {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .feature-badge {
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .product-price {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .add-to-cart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 40px;
+            opacity: 0.6;
+        }
+        
+        footer {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            margin-top: 60px;
+            text-align: center;
+            box-shadow: 0 -4px 12px var(--shadow);
+        }
+        
         @media (max-width: 768px) {
-            .container {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .products-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .cart-item-controls {
+                width: 100%;
+                justify-content: space-between;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Card 1 - Q2612A -->
-        <div class="promo-card card1">
-            <div class="icon">🖨️</div>
-            <div class="header">
-                <div class="logo-text">FRAN CÓPIAS</div>
-                <div class="promo-badge">⚡ PROMOÇÃO ⚡</div>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                FRAN CÓPIAS
             </div>
-            
-            <div class="toner-model">Q2612A</div>
-            <div class="compatible">✓ HP LaserJet 1010/1012/1015<br>✓ HP LaserJet 1018/1020/1022<br>✓ HP LaserJet 3015/3020/3030/3050</div>
-            
-            <div class="features">
-                <div class="feature-tag">⭐ Alta Qualidade</div>
-                <div class="feature-tag">📦 Pronta Entrega</div>
-                <div class="feature-tag">✅ Garantia</div>
-            </div>
-            
-            <div class="price-section">
-                <div class="price-label">💰 Preço Especial:</div>
-                <div class="price-box">R$ 39,99</div>
-            </div>
-            
-            <a href="https://wa.me/5516999096000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20toner%20Q2612A%20em%20promo%C3%A7%C3%A3o!" target="_blank" class="whatsapp-btn">
-                📱 PEDIR PELO WHATSAPP
-            </a>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span id="theme-icon">🌙</span>
+                <span id="theme-text">Tema Escuro</span>
+            </button>
         </div>
+    </header>
 
-        <!-- Card 2 - TN660 -->
-        <div class="promo-card card2">
-            <div class="icon">🖨️</div>
-            <div class="header">
-                <div class="logo-text">FRAN CÓPIAS</div>
-                <div class="promo-badge">⚡ PROMOÇÃO ⚡</div>
-            </div>
-            
-            <div class="toner-model">TN660</div>
-            <div class="compatible">✓ Brother HL-L2320D/L2340DW<br>✓ Brother HL-L2360DW/L2380DW<br>✓ Brother DCP-L2520DW/L2540DW<br>✓ Brother MFC-L2700DW/L2740DW</div>
-            
-            <div class="features">
-                <div class="feature-tag">⭐ Alta Qualidade</div>
-                <div class="feature-tag">📦 Pronta Entrega</div>
-                <div class="feature-tag">✅ Garantia</div>
-            </div>
-            
-            <div class="price-section">
-                <div class="price-label">💰 Preço Especial:</div>
-                <div class="price-box">R$ 41,90</div>
-            </div>
-            
-            <a href="https://wa.me/5516999096000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20toner%20TN660%20em%20promo%C3%A7%C3%A3o!" target="_blank" class="whatsapp-btn">
-                📱 PEDIR PELO WHATSAPP
-            </a>
-        </div>
-
-        <!-- Card 3 - TN3472 -->
-        <div class="promo-card card3">
-            <div class="icon">🖨️</div>
-            <div class="header">
-                <div class="logo-text">FRAN CÓPIAS</div>
-                <div class="promo-badge">⚡ PROMOÇÃO ⚡</div>
-            </div>
-            
-            <div class="toner-model">TN3472</div>
-            <div class="compatible">✓ Brother HL-L5102DW/L6202DW<br>✓ Brother DCP-L5502DN/L5652DN<br>✓ Brother MFC-L5702DW/L6702DW<br>✓ Brother HL-L6402DW</div>
-            
-            <div class="features">
-                <div class="feature-tag">⭐ Alta Qualidade</div>
-                <div class="feature-tag">📦 Pronta Entrega</div>
-                <div class="feature-tag">✅ Garantia</div>
-            </div>
-            
-            <div class="price-section">
-                <div class="price-label">💰 Preço Especial:</div>
-                <div class="price-box">R$ 74,90</div>
-            </div>
-            
-            <a href="https://wa.me/5516999096000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20toner%20TN3472%20em%20promo%C3%A7%C3%A3o!" target="_blank" class="whatsapp-btn">
-                📱 PEDIR PELO WHATSAPP
-            </a>
-        </div>
+    <div class="hero">
+        <h1>🎉 Promoções Especiais em Toners</h1>
+        <p>Os melhores preços e qualidade garantida!</p>
     </div>
+
+    <div class="container">
+        <div class="cart-summary" id="cartSummary" style="display: none;">
+            <h2>🛒 Seu Carrinho</h2>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">R$ 0,00</span>
+            </div>
+            <button class="whatsapp-checkout" onclick="sendToWhatsApp()">
+                📱 FINALIZAR PEDIDO NO WHATSAPP
+            </button>
+        </div>
+
+        <h2 style="margin-bottom: 20px; color: var(--primary);">📦 Produtos Disponíveis</h2>
+        
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <footer>
+        <p><strong>FRAN CÓPIAS</strong> - Toners e Suprimentos de Qualidade</p>
+        <p style="margin-top: 10px;">📱 WhatsApp: (16) 99909-6000</p>
+    </footer>
+
+    <script>
+        const products = [
+            {
+                id: 'q2612a',
+                name: 'Q2612A',
+                price: 39.99,
+                compatible: 'HP LaserJet 1010/1012/1015/1018/1020/1022/3015/3020/3030/3050',
+                features: ['⭐ Alta Qualidade', '📦 Pronta Entrega', '✅ Garantia']
+            },
+            {
+                id: 'tn660',
+                name: 'TN660',
+                price: 41.90,
+                compatible: 'Brother HL-L2320D/L2340DW/L2360DW/L2380DW, DCP-L2520DW/L2540DW, MFC-L2700DW/L2740DW',
+                features: ['⭐ Alta Qualidade', '📦 Pronta Entrega', '✅ Garantia']
+            },
+            {
+                id: 'tn3472',
+                name: 'TN3472',
+                price: 74.90,
+                compatible: 'Brother HL-L5102DW/L6202DW/L6402DW, DCP-L5502DN/L5652DN, MFC-L5702DW/L6702DW',
+                features: ['⭐ Alta Qualidade', '📦 Pronta Entrega', '✅ Garantia']
+            }
+        ];
+
+        let cart = {};
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-icon">🖨️</div>
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-compatible">✓ ${product.compatible}</div>
+                    <div class="product-features">
+                        ${product.features.map(f => `<div class="feature-badge">${f}</div>`).join('')}
+                    </div>
+                    <div class="product-price">R$ ${product.price.toFixed(2)}</div>
+                    <button class="add-to-cart" onclick="addToCart('${product.id}')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(productId) {
+            if (!cart[productId]) {
+                cart[productId] = { quantity: 0 };
+            }
+            cart[productId].quantity++;
+            updateCart();
+        }
+
+        function updateQuantity(productId, delta) {
+            if (cart[productId]) {
+                cart[productId].quantity += delta;
+                if (cart[productId].quantity <= 0) {
+                    delete cart[productId];
+                }
+                updateCart();
+            }
+        }
+
+        function removeFromCart(productId) {
+            delete cart[productId];
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartSummary = document.getElementById('cartSummary');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            const itemCount = Object.keys(cart).length;
+            
+            if (itemCount === 0) {
+                cartSummary.style.display = 'none';
+                return;
+            }
+            
+            cartSummary.style.display = 'block';
+            
+            let total = 0;
+            let html = '';
+            
+            Object.keys(cart).forEach(productId => {
+                const product = products.find(p => p.id === productId);
+                const quantity = cart[productId].quantity;
+                const subtotal = product.price * quantity;
+                total += subtotal;
+                
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${product.name}</div>
+                            <div style="font-size: 14px; opacity: 0.8;">R$ ${product.price.toFixed(2)} cada</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <div class="qty-control">
+                                <button class="qty-btn" onclick="updateQuantity('${productId}', -1)">-</button>
+                                <span style="min-width: 30px; text-align: center; font-weight: bold;">${quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity('${productId}', 1)">+</button>
+                            </div>
+                            <div style="font-weight: bold; color: var(--primary);">R$ ${subtotal.toFixed(2)}</div>
+                            <button class="remove-btn" onclick="removeFromCart('${productId}')">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItems.innerHTML = html;
+            cartTotal.textContent = `R$ ${total.toFixed(2)}`;
+        }
+
+        function sendToWhatsApp() {
+            let message = 'Olá! Gostaria de fazer o seguinte pedido:\n\n';
+            let total = 0;
+            
+            Object.keys(cart).forEach(productId => {
+                const product = products.find(p => p.id === productId);
+                const quantity = cart[productId].quantity;
+                const subtotal = product.price * quantity;
+                total += subtotal;
+                
+                message += `📦 ${product.name}\n`;
+                message += `   Quantidade: ${quantity}\n`;
+                message += `   Valor: R$ ${subtotal.toFixed(2)}\n\n`;
+            });
+            
+            message += `💰 *TOTAL: R$ ${total.toFixed(2)}*`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/5516999096000?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            
+            if (newTheme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Tema Claro';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Tema Escuro';
+            }
+        }
+
+        renderProducts();
+    </script>
 </body>
 </html>
